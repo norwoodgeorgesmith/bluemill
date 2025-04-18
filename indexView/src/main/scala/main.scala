@@ -22,20 +22,20 @@ object SideNav {
     sideNav()
   }
 
+  val sideNavBtnWidth = "30px"
+
   val sideNavWidth: Var[String] = Var("0px")
-  val sideNavHeight: Var[String] = Var("0px")
+  val sideNavHeight = "400px"
 
   def hide(): Unit =
     sideNavWidth.update(_ => "0px")
-  // sideNavHeight.update(_ => "0px")
 
   def show(): Unit =
     sideNavWidth.update(_ => "250px")
-  //sideNavHeight.update(_ => "400px")
 
   def sideMenu(): HtmlElement = ul(
-    p(a( href:="javascript:void(0);", "default")),
-    p(a( href:="javascript:void(0);", "speeches")),
+    p(a( href:="javascript:void(0);", "speakers")),
+    //p(a( href:="javascript:void(0);", "speeches")),
   )
 
   def sideNavBtn(): HtmlElement = button(typ := "button", "\u2715",
@@ -45,9 +45,9 @@ object SideNav {
     overflow := "hidden",
     // visibility <-- sideNavBtnVis.signal,
     zIndex := "10",
-    margin := "7px",
+    margin := "5px",
     // top := "0", left := "0",
-    width := "30",
+    width := sideNavBtnWidth,
     backgroundColor := "lightGray",
     borderStyle := "solid",
     borderWidth := "1px",
@@ -59,7 +59,7 @@ object SideNav {
 
   def sideNav(): HtmlElement = div(cls := "mySidenav",
     width <-- sideNavWidth.signal,
-    height := "400px", //sideNavHeight.signal,
+    height := sideNavHeight,
     // float:="top left",
     top := "0px", left := "0px",
     position := "absolute",
@@ -89,8 +89,8 @@ object Header {
 
 
   def stripe(clr: String): HtmlElement = div(
-    width := Util.intToPixel(menuBtnWidth -6),
-    height := "3px",
+    width := Util.intToPixel(menuBtnWidth -8),
+    height := "2px",
     backgroundColor := clr,
     margin := "4px",
   )
